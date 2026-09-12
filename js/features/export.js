@@ -14,15 +14,10 @@ export function exportName(ext) {
   return `omarchy-${a}-${style}${shape}${size}.${ext}`;
 }
 
-export function updateFname() {
-  $("fname").textContent = exportName("svg").replace(/\.svg$/, "");
-}
-
 export function setPngWidth(w) {
   if (!PNG_WIDTHS.includes(w)) return;
   state.pngWidth = w;
   seg($("pngSeg"), PNG_WIDTHS.map(v => ({ id: v, label: String(v) })), w, setPngWidth);
-  updateFname();
 }
 
 export function serialize() {

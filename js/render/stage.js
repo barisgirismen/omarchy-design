@@ -1,7 +1,6 @@
 import { state } from "../core/state.js";
 import { frame } from "../core/geometry.js";
 import { buildSVG } from "../core/svg.js";
-import { updateFname } from "../features/export.js";
 import { $ } from "../ui/dom.js";
 
 let liveSVG = null;
@@ -16,7 +15,6 @@ export function render() {
   stage.classList.toggle("transparent", state.bg.mode === "none");
   liveSVG = svg;
   fit();
-  updateFname();
 }
 
 export function fit() {

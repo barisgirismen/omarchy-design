@@ -35,6 +35,11 @@
   --scrim:rgba(10,10,10,.62);
   --scrim2:rgba(10,10,10,.45);
 
+  /* bottom strip: stage toolbar + preset tiles on the left, export footer on the right */
+  --stagebar-h:37px;
+  --presets-h:96px;
+  --footer-h:calc(var(--stagebar-h) + var(--presets-h));
+
   /* brand surface: the homepage ground and the logo page header share it */
   --brand-surface:#121212;
   --grain-opacity:.055;
