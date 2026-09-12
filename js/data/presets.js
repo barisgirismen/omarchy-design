@@ -1,0 +1,273 @@
+import { ladder } from "../core/gradients.js";
+
+export const STYLES = [
+  {
+    id: "omarchystep",
+    name: "omarchy step",
+    mode: "stepped",
+    cols: ladder("#a8cd76"),
+  },
+  {
+    id: "omarchy",
+    name: "omarchy green",
+    mode: "solid",
+    stops: [
+      { c: "#a8cd76", p: 0 },
+      { c: "#2b5037", p: 1 },
+    ],
+  },
+  {
+    id: "paper",
+    name: "paper white",
+    mode: "solid",
+    stops: [
+      { c: "#ffffff", p: 0 },
+      { c: "#cccccc", p: 1 },
+    ],
+  },
+  {
+    id: "ink",
+    name: "ink on white",
+    mode: "solid",
+    stops: [
+      { c: "#111511", p: 0 },
+      { c: "#555555", p: 1 },
+    ],
+    bg: { mode: "solid", c1: "#ffffff", c2: "#e8e8e8", angle: 90 },
+  },
+  {
+    id: "phosphor",
+    name: "phosphor",
+    mode: "linear",
+    angle: 90,
+    stops: [
+      { c: "#e8ffef", p: 0 },
+      { c: "#39ff8a", p: 0.45 },
+      { c: "#0c6b34", p: 1 },
+    ],
+  },
+  {
+    id: "terminal",
+    name: "terminal step",
+    mode: "stepped",
+    cols: ladder("#4ade80"),
+  },
+  {
+    id: "sunset",
+    name: "sunset step",
+    mode: "stepped",
+    cols: ["#ffe9a8", "#ffb347", "#ff6b6b", "#b5387f", "#4c1d5a"],
+  },
+  {
+    id: "ice",
+    name: "ice fade",
+    mode: "linear",
+    angle: 90,
+    stops: [
+      { c: "#ffffff", p: 0 },
+      { c: "#a5e3ff", p: 0.5 },
+      { c: "#2563eb", p: 1 },
+    ],
+  },
+  {
+    id: "mono",
+    name: "mono step",
+    mode: "stepped",
+    cols: ["#ffffff", "#d2d8d4", "#9aa49d", "#5c655f", "#2b312d"],
+  },
+  {
+    id: "crt",
+    name: "crt",
+    mode: "stepped",
+    cols: ["#d0fdd9", "#a8fcba", "#82fb9c", "#539e65", "#2b5037"],
+    fx: { scan: 0.28 },
+    bg: { mode: "solid", c1: "#06100a", c2: "#1b2a20", angle: 90 },
+  },
+  {
+    id: "holo",
+    name: "holographic",
+    mode: "holo",
+    angle: 25,
+    holo: { hue: 150, cycles: 1.5, sheen: 0.5, sat: 80, light: 74 },
+  },
+  {
+    id: "holo2",
+    name: "foil violet",
+    mode: "holo",
+    angle: 70,
+    holo: { hue: 260, cycles: 2.2, sheen: 0.62, sat: 72, light: 70 },
+  },
+];
+
+/* The reference wordmark's exact five band colours (hackerman theme). */
+export const REFERENCE_BANDS = [
+  "#d0fdd9",
+  "#a8fcba",
+  "#82fb9c",
+  "#539e65",
+  "#2b5037",
+];
+
+/* Every omarchy theme (accent + background from each theme's colors.toml in
+   github.com/omacom/omarchy, branch quattro). Each accent is run through the
+   ladder so every theme reads light-to-dark the same way the reference
+   wordmark does. Hackerman uses the reference colours verbatim. */
+const THEME_ACCENTS = [
+  {
+    id: "hackerman",
+    name: "hackerman",
+    accent: "#82fb9c",
+    bg: "#0b0c16",
+    mode: "dark",
+    cols: REFERENCE_BANDS,
+  },
+  {
+    id: "catppuccin",
+    name: "catppuccin",
+    accent: "#89b4fa",
+    bg: "#1e1e2e",
+    mode: "dark",
+  },
+  {
+    id: "catppuccin-latte",
+    name: "catppuccin latte",
+    accent: "#1e66f5",
+    bg: "#eff1f5",
+    mode: "light",
+  },
+  {
+    id: "ethereal",
+    name: "ethereal",
+    accent: "#7d82d9",
+    bg: "#060b1e",
+    mode: "dark",
+  },
+  {
+    id: "everforest",
+    name: "everforest",
+    accent: "#7fbbb3",
+    bg: "#2d353b",
+    mode: "dark",
+  },
+  {
+    id: "flexoki-light",
+    name: "flexoki light",
+    accent: "#205ea6",
+    bg: "#fffcf0",
+    mode: "light",
+  },
+  {
+    id: "gruvbox",
+    name: "gruvbox",
+    accent: "#7daea3",
+    bg: "#282828",
+    mode: "dark",
+  },
+  {
+    id: "kanagawa",
+    name: "kanagawa",
+    accent: "#dcd7ba",
+    bg: "#1f1f28",
+    mode: "dark",
+  },
+  {
+    id: "last-horizon",
+    name: "last horizon",
+    accent: "#b59790",
+    bg: "#0c0b0c",
+    mode: "dark",
+  },
+  {
+    id: "lumon",
+    name: "lumon",
+    accent: "#8bc9eb",
+    bg: "#16242d",
+    mode: "dark",
+  },
+  {
+    id: "lupine",
+    name: "lupine",
+    accent: "#3264eb",
+    bg: "#fafafa",
+    mode: "light",
+  },
+  {
+    id: "matte-black",
+    name: "matte black",
+    accent: "#e68e0d",
+    bg: "#121212",
+    mode: "dark",
+  },
+  {
+    id: "miasma",
+    name: "miasma",
+    accent: "#78824b",
+    bg: "#222222",
+    mode: "dark",
+  },
+  { id: "nord", name: "nord", accent: "#81a1c1", bg: "#2e3440", mode: "dark" },
+  {
+    id: "osaka-jade",
+    name: "osaka jade",
+    accent: "#509475",
+    bg: "#111c18",
+    mode: "dark",
+  },
+  {
+    id: "retro-82",
+    name: "retro 82",
+    accent: "#faa968",
+    bg: "#05182e",
+    mode: "dark",
+  },
+  {
+    id: "ristretto",
+    name: "ristretto",
+    accent: "#f38d70",
+    bg: "#2c2525",
+    mode: "dark",
+  },
+  {
+    id: "rose-pine",
+    name: "rosé pine",
+    accent: "#56949f",
+    bg: "#faf4ed",
+    mode: "light",
+  },
+  {
+    id: "solitude",
+    name: "solitude",
+    accent: "#798186",
+    bg: "#101315",
+    mode: "dark",
+  },
+  {
+    id: "tokyo-night",
+    name: "tokyo night",
+    accent: "#7aa2f7",
+    bg: "#1a1b26",
+    mode: "dark",
+  },
+  {
+    id: "vantablack",
+    name: "vantablack",
+    accent: "#8d8d8d",
+    bg: "#000000",
+    mode: "dark",
+  },
+  {
+    id: "white",
+    name: "white",
+    accent: "#6e6e6e",
+    bg: "#ffffff",
+    mode: "light",
+  },
+];
+
+export const THEMES = THEME_ACCENTS.map((t) => ({
+  id: t.id,
+  name: t.name,
+  mode: "stepped",
+  cols: t.cols || ladder(t.accent),
+  bg: { mode: "solid", c1: t.bg, c2: t.bg, angle: 90 },
+}));

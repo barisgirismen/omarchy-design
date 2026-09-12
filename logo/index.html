@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Omarchy Design — Logo</title>
+    <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="head">
+        <a class="home" href="../" title="Omarchy Design home">
+          <img
+            class="mark"
+            src="../assets/marks/omarchy-design-line.svg"
+            alt="omarchy design"
+          />
+        </a>
+      </header>
+
+      <div class="left">
+        <div class="stagewrap">
+          <div class="stage" id="stage"></div>
+        </div>
+
+        <div class="stagebar">
+          <div class="tabs" role="tablist" aria-label="preset groups">
+            <button
+              class="tab"
+              role="tab"
+              id="tabStyles"
+              aria-selected="true"
+              aria-controls="styleTrack"
+            >
+              styles
+            </button>
+            <button
+              class="tab"
+              role="tab"
+              id="tabThemes"
+              aria-selected="false"
+              aria-controls="themeTrack"
+            >
+              omarchy themes
+            </button>
+          </div>
+          <button
+            class="iconbtn play"
+            id="btnPlay"
+            title="Play or pause the holographic motion"
+          >
+            ❚❚ pause
+          </button>
+          <button
+            class="iconbtn"
+            id="btnShuffle"
+            title="Try a random variation"
+          >
+            shuffle
+          </button>
+        </div>
+
+        <div class="presets">
+          <div
+            class="ptrack"
+            id="styleTrack"
+            role="tabpanel"
+            aria-labelledby="tabStyles"
+          ></div>
+          <div
+            class="ptrack"
+            id="themeTrack"
+            role="tabpanel"
+            aria-labelledby="tabThemes"
+            hidden
+          ></div>
+        </div>
+      </div>
+
+      <div class="right">
+        <div class="controls" id="controls">
+          <section class="sec">
+            <h2>LOGO</h2>
+            <div class="body">
+              <div class="seg" id="assetSeg"></div>
+            </div>
+          </section>
+
+          <section class="sec">
+            <h2>FILL</h2>
+            <div class="body">
+              <div class="seg" id="modeSeg"></div>
+              <div id="fillBody"></div>
+            </div>
+          </section>
+
+          <section class="sec">
+            <h2>EFFECTS</h2>
+            <div class="body" id="fxBody"></div>
+          </section>
+
+          <section class="sec">
+            <h2>CANVAS</h2>
+            <div class="body" id="canvasBody"></div>
+          </section>
+        </div>
+
+        <div class="export">
+          <div class="row">
+            <button class="btn primary" id="btnPng">save .png</button>
+            <button class="btn" id="btnSvg">save .svg</button>
+            <button class="btn fit" id="btnCopy">copy code</button>
+          </div>
+          <div class="field">
+            <label>png width</label>
+            <div class="seg" id="pngSeg"></div>
+          </div>
+          <div class="fname" id="fname"></div>
+        </div>
+      </div>
+    </div>
+    <div class="toast" id="toast"></div>
+
+    <script type="module" src="../js/main.js"></script>
+  </body>
+</html>

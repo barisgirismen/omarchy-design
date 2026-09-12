@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1316 1316" width="1316" height="1316" fill="none"><defs><mask id="f103_m" maskUnits="userSpaceOnUse" x="0" y="0" width="1316" height="1316"><g fill="#fff"><path d="M90 1226H705V1316H0V0H1316V1316H805V1226H1226V90H90V1226Z"/>
+<path d="M1136 1136H180V180H708.21V270H270V1046H1046V270H946.21V180H1136V1136Z"/>
+<rect x="605" y="1136" width="100" height="90"/>
+<rect x="608" y="90" width="100" height="90"/>
+<rect y="608" width="270" height="100"/>
+<!-- Code injected by live-server -->
+<script>
+	//   &lt;-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i &lt; sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href &amp;&amp; typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&amp;|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') &gt;= 0 ? '&amp;' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage &amp;&amp; !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// 
+</script></g></mask><linearGradient id="f103_g" gradientUnits="userSpaceOnUse" x1="658.00" y1="0.00" x2="658.00" y2="1316.00"><stop offset="0.0000" stop-color="#ffffff"/><stop offset="0.2736" stop-color="#d2d8d4"/><stop offset="0.4787" stop-color="#9aa49d"/><stop offset="0.7523" stop-color="#5c655f"/><stop offset="1.0000" stop-color="#2b312d"/></linearGradient></defs><g mask="url(#f103_m)"><rect fill="url(#f103_g)" x="0" y="0" width="1316" height="1316"/></g></svg>
