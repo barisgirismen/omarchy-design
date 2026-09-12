@@ -38,6 +38,8 @@ body{background:var(--brand-surface);color:#fff}
 .guides .h:nth-child(9){top:78.3%}
 .guides .h:nth-child(10){top:83.3%}
 .guides .h:nth-child(11){top:88.7%}
+/* top line: the bottom one mirrored about the logo's centre */
+.guides .h:nth-child(12){top:6%}
 
 .nav{
   position:relative;z-index:1;
