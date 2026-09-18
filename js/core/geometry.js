@@ -1,19 +1,43 @@
 import { state } from "./state.js";
-import { ASSETS } from "../data/marks.js";
+import { ASSETS, TAGLINE } from "../data/marks.js";
 import { clamp } from "./color.js";
 import { shapeById } from "../data/shapes.js";
 
 export function asset() { return ASSETS[state.asset]; }
 
+/* Tagline sizing, in wordmark grid rows, taken from omarchy.org's desktop
+   hero. The site draws the same 81x19 grid with 51x50 cells, so a row
+   (the site's pxr unit) is 896px / 81 x 50/51 = 10.85px. The h1 is 30px and sits 5 rows
+   below the wordmark. */
+const ROW = 896 / 81 * 50 / 51, TAG_EM = 30 / ROW, TAG_GAP = 5;
+
+export function taglineFits() { return state.asset !== "icon"; }
+
+/* Where the tagline goes, centred under the mark; null when it is off. */
+export function tagline() {
+  if (!state.tagline.on || !taglineFits() || !TAGLINE.w) return null;
+  const a = asset(), s = TAG_EM * a.unit / 1000;
+  const w = TAGLINE.w * s, h = TAGLINE.h * s;
+  return { x: (a.w - w) / 2, y: a.h + TAG_GAP * a.unit, w, h, s };
+}
+
+/* Everything that gets drawn: the mark, plus the tagline when it is on. */
+function content() {
+  const a = asset(), t = tagline();
+  if (!t) return { w: a.w, h: a.h, x: 0 };
+  const x = Math.min(0, t.x);
+  return { w: Math.max(a.w, t.x + t.w) - x, h: t.y + t.h, x };
+}
+
 export function frame() {
-  const a = asset(), u = a.unit, pad = state.pad * u;
+  const a = asset(), c = content(), u = a.unit, pad = state.pad * u;
   let padX = pad, padY = pad;
   const r = shapeById(state.aspect).ratio;
   if (r) {
-    const W = Math.max(a.w + 2 * pad, (a.h + 2 * pad) * r), H = W / r;
-    padX = (W - a.w) / 2; padY = (H - a.h) / 2;
+    const W = Math.max(c.w + 2 * pad, (c.h + 2 * pad) * r), H = W / r;
+    padX = (W - c.w) / 2; padY = (H - c.h) / 2;
   }
-  return { x: -padX, y: -padY, w: a.w + 2 * padX, h: a.h + 2 * padY, a, u };
+  return { x: c.x - padX, y: -padY, w: c.w + 2 * padX, h: c.h + 2 * padY, a, u };
 }
 
 /* Gradient axis across the mark itself (not the padded canvas). */
