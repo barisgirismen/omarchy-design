@@ -17,6 +17,7 @@ export const state = {
   fx: defaultFx(),
   bg: defaultBg(),
   pad: 0,
+  tagline: { on: false, c: "#ddf7ff" },   /* the omarchy.org hero line under the wordmark */
   aspect: "auto",             /* shape id, see data/shapes.js */
   anim: !window.matchMedia("(prefers-reduced-motion: reduce)").matches,
   phase: 0,

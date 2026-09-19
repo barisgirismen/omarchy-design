@@ -4,7 +4,7 @@ import { state } from "./core/state.js";
 import { render } from "./render/stage.js";
 import { $ } from "./ui/dom.js";
 import { seg } from "./ui/widgets.js";
-import { buildFill, buildFx, buildCanvas } from "./ui/panels.js";
+import { buildFill, buildFx, buildCanvas, buildTagline } from "./ui/panels.js";
 import { initPresetTracks, paintPresets } from "./ui/presetTracks.js";
 import { applyPreset, pickMode, pickAsset, ASSET_LIST } from "./app/actions.js";
 import { STYLES } from "./data/presets.js";
@@ -28,7 +28,7 @@ async function boot() {
   initPresetTracks(applyPreset);
   seg($("assetSeg"), ASSET_LIST, state.asset, pickAsset);
   seg($("modeSeg"), MODES, state.mode, pickMode);
-  buildFill(); buildFx(); buildCanvas(); render(); paintPresets();
+  buildFill(); buildFx(); buildCanvas(); buildTagline(); render(); paintPresets();
   const style = STYLES.find(p => p.id === DEFAULT_STYLE);
   if (style) applyPreset(style);
 

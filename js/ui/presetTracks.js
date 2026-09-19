@@ -40,6 +40,7 @@ function thumbFor(p) {
   state.fx = p.fx ? Object.assign({}, p.fx) : defaultFx();
   state.bg = p.bg ? Object.assign({}, p.bg) : defaultBg();
   state.pad = .7; state.aspect = "auto"; state.phase = .18;
+  state.tagline = { ...state.tagline, on: false };
   state.asset = state.asset === "icon" ? "icon" : "wordmark";
   const svg = buildSVG();
   svg.removeAttribute("width"); svg.removeAttribute("height");

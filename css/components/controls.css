@@ -55,6 +55,9 @@ select{cursor:pointer}
 .check>span{align-self:baseline}   /* label and caption share a baseline */
 .check .cap{margin-bottom:0}
 .check:hover{color:var(--ink)}
+.check:has(input:disabled){opacity:.45;cursor:not-allowed}
+.check:has(input:disabled):hover{color:var(--dim)}
+.check input:disabled{cursor:not-allowed}
 
 .mini{border:1px solid var(--line);padding:4px 8px;color:var(--dim);font-size:12px;white-space:nowrap}
 .mini:hover:not(:disabled){color:var(--ink);border-color:var(--line2);background:var(--panel2)}
