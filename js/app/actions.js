@@ -4,7 +4,7 @@ import { MODES } from "../data/modes.js";
 import { render } from "../render/stage.js";
 import { $ } from "../ui/dom.js";
 import { seg } from "../ui/widgets.js";
-import { buildFill, buildFx, buildCanvas } from "../ui/panels.js";
+import { buildFill, buildFx, buildCanvas, buildTagline } from "../ui/panels.js";
 import { paintPresets } from "../ui/presetTracks.js";
 
 export function applyPreset(p) {
@@ -20,9 +20,10 @@ export function applyPreset(p) {
   if (p.holo)  state.holo = Object.assign({}, state.holo, p.holo);
   state.fx = p.fx ? Object.assign({}, p.fx) : defaultFx();
   state.bg = p.bg ? Object.assign({}, p.bg) : defaultBg();
+  state.tagline.c = p.text || "#ffffff";   /* themes carry omarchy.org's text colour */
   state.sel = 0;
   seg($("modeSeg"), MODES, state.mode, pickMode);
-  buildFill(); buildFx(); buildCanvas(); render(); paintPresets();
+  buildFill(); buildFx(); buildCanvas(); buildTagline(); render(); paintPresets();
 }
 
 export function pickMode(id) {
@@ -40,5 +41,5 @@ export const ASSET_LIST = [
 export function pickAsset(id) {
   state.asset = id;
   seg($("assetSeg"), ASSET_LIST, id, pickAsset);
-  buildFill(); render(); paintPresets();
+  buildFill(); buildTagline(); render(); paintPresets();
 }

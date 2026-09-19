@@ -1,5 +1,5 @@
 import { state } from "../core/state.js";
-import { frame } from "../core/geometry.js";
+import { frame, tagline } from "../core/geometry.js";
 import { buildSVG, SVGNS } from "../core/svg.js";
 import { $ } from "../ui/dom.js";
 import { seg } from "../ui/widgets.js";
@@ -9,9 +9,10 @@ import { PNG_WIDTHS } from "../data/shapes.js";
 export function exportName(ext) {
   const a = state.asset;
   const style = state.preset || state.mode;
+  const line = tagline() ? "-tagline" : "";
   const shape = state.aspect === "auto" ? "" : "-" + state.aspect;
   const size = ext === "png" ? "-" + state.pngWidth : "";
-  return `omarchy-${a}-${style}${shape}${size}.${ext}`;
+  return `omarchy-${a}${line}-${style}${shape}${size}.${ext}`;
 }
 
 export function setPngWidth(w) {

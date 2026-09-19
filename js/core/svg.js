@@ -1,5 +1,6 @@
 import { state } from "./state.js";
-import { frame, axis } from "./geometry.js";
+import { frame, axis, tagline } from "./geometry.js";
+import { TAGLINE } from "../data/marks.js";
 import { clamp } from "./color.js";
 import { rampStops, stepStops, holoStops, STEP_ANGLE } from "./gradients.js";
 
@@ -102,6 +103,14 @@ export function buildSVG() {
   }
 
   svg.appendChild(paint);
+
+  const t = tagline();
+  if (t) {
+    svg.appendChild(el("g", {
+      fill: st.tagline.c,
+      transform: `translate(${+t.x.toFixed(3)},${+t.y.toFixed(3)}) scale(${+t.s.toFixed(6)})`,
+    }, TAGLINE.content));
+  }
   return svg;
 }
 

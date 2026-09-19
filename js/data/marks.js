@@ -1,11 +1,18 @@
 const MARK_URLS = {
   icon:     new URL("../../assets/marks/icon.svg", import.meta.url),
   wordmark: new URL("../../assets/marks/wordmark.svg", import.meta.url),
+  tagline:  new URL("../../assets/marks/tagline.svg", import.meta.url),
 };
 
 /* Filled by loadMarks(). Shape: { label, w, h, unit, content } per asset,
    where `unit` is the pixel-grid size the mark was drawn on. */
 export const ASSETS = {};
+
+/* "Beautiful, fun & agentic Linux by DHH", outlined from JetBrains Mono
+   Medium with omarchy.org's hero h1 setting (tracking of minus 0.025em). The viewBox
+   is the CSS line box: 1000 units to the em, line height 1.2. Filled by
+   loadMarks() as { w, h, content }. */
+export const TAGLINE = {};
 
 async function fetchMark(url) {
   const res = await fetch(url);
@@ -23,7 +30,10 @@ async function fetchMark(url) {
 }
 
 export async function loadMarks() {
-  const [icon, word] = await Promise.all([fetchMark(MARK_URLS.icon), fetchMark(MARK_URLS.wordmark)]);
+  const [icon, word, line] = await Promise.all([
+    fetchMark(MARK_URLS.icon), fetchMark(MARK_URLS.wordmark), fetchMark(MARK_URLS.tagline),
+  ]);
+  Object.assign(TAGLINE, line);
 
   /* Lockup rule: the icon matches the body height of the wordmark's "o"
      (y 15..255, 240 units) so both share the same vertical centre, and sits

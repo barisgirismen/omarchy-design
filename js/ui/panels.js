@@ -1,4 +1,5 @@
 import { state } from "../core/state.js";
+import { taglineFits } from "../core/geometry.js";
 import { render } from "../render/stage.js";
 import { syncAnim } from "../render/animation.js";
 import { $, div, span } from "./dom.js";
@@ -54,6 +55,18 @@ export function buildFx() {
   const b = $("fxBody");
   b.replaceChildren();
   b.appendChild(slider("scanlines", state.fx.scan, 0, .6, .01, v => v ? Math.round(v * 100) + "" : "off", v => { state.fx.scan = v; render(); }));
+}
+
+export function buildTagline() {
+  const b = $("taglineBody");
+  b.replaceChildren();
+  const fits = taglineFits();
+  const c = checkbox("tagline", state.tagline.on && fits, v => { state.tagline.on = v; buildTagline(); render(); });
+  c.querySelector("input").disabled = !fits;
+  c.title = "Beautiful, fun & agentic Linux by DHH";
+  if (!fits) c.appendChild(span("cap", " (wordmark and lockup only)"));
+  b.appendChild(c);
+  if (state.tagline.on && fits) b.appendChild(colorRow("colour", state.tagline.c, v => { state.tagline.c = v; render(); }));
 }
 
 export function buildCanvas() {
